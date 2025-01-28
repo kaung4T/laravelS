@@ -1,7 +1,9 @@
 <?php
 
+use App\Events\MailEvent;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\RefreshMiddleware;
+use App\Listeners\MailListen;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;

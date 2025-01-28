@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MailEvent;
 use App\Hook\Item\ItemHook;
 use App\HookUtils\Item\GetItem;
 use App\Http\Controllers\Controller;
+use App\Jobs\TestMail;
+use App\Listeners\MailListen;
 use App\Models\Product;
 use App\Models\User;
+use App\Notifications\NotiTest;
+use App\Notifications\TestNoti;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Auth\AuthManager;
@@ -17,6 +22,8 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Mockery\Undefined;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -31,12 +38,35 @@ class ItemController extends Controller
         $this->item = $item;
     }
 
-    public function all_item (Request $request, Product $product) : JsonResponse {
+    public function all_item (Request $request, Product $product, GG $gg_class) : JsonResponse {
         try {
-            $p = Product::find(1);
-            // $p = $p->user_many()->syncWithoutDetaching([1, 2, 3]);
+            $userNoti = User::findOrFail(1);
 
-            $u = User::find(1);
+            Notification::send($userNoti, new TestNoti('eeeeeeeeeeeeeeeeeeee'));
+
+            $name = 'gusto';
+
+            $ff = function () use ($name) {
+                return $name;
+            };
+
+            $ss = $ff();
+
+            print_r($ss);
+
+            // TestMail::dispatch();
+
+            // $user = User::findOrFail(1);
+            // MailEvent::dispatch($user);
+
+            $uu = User::findOrFail(1);
+
+            $p = Product::findOrFail(1);
+            
+            // $p->user_many()->detach(1);
+            // $p->user_many()->syncWithoutDetaching([1, 2, 3]);
+
+            $u = User::findOrFail(1);
 
             print_r($u->name);
 
