@@ -11,8 +11,8 @@ class GG extends SS
     // public string|null $name;
 
     public function __construct(string|null $name = null) {
-        // $this->name = $name;
         parent::__construct($name);
+        // $this->name = $name;
     }
 
     public function fun () {

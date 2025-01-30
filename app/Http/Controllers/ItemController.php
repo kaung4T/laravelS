@@ -40,6 +40,10 @@ class ItemController extends Controller
 
     public function all_item (Request $request, Product $product, GG $gg_class) : JsonResponse {
         try {
+            $gg = new GG('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
+
+            print_r($gg->name);
+
             $userNoti = User::findOrFail(1);
 
             Notification::send($userNoti, new TestNoti('eeeeeeeeeeeeeeeeeeee'));
