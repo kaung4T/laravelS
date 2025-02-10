@@ -24,6 +24,7 @@ Route::group([
 
 });
 
+// Route::middleware('auth:api')->prefix('all')->group(function () {
 Route::prefix('all')->group(function () {
     Route::get('/all_user', [App\Http\Controllers\UserController::class, 'all_user'])->name('all_user');
     Route::get('/all_item', [App\Http\Controllers\ItemController::class, 'all_item'])->name('all_item');
