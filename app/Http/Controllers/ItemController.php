@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Redis;
 use Mockery\Undefined;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -40,6 +41,9 @@ class ItemController extends Controller
 
     public function all_item (Request $request, Product $product, GG $gg_class) : JsonResponse {
         try {
+            Redis::set('user1', 'iwejfoewjfoiewjf');
+            Redis::set('user2', '123123123123123');
+
             $gg = new GG('ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
 
             print_r($gg->name);
